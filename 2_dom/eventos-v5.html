@@ -1,0 +1,44 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar($event, 5)">Somar 1</button>
+    <p v-on:mousemove="atualizarXY">
+        Mouse : {{ x }} e {{ y }}
+        <span v-on:mousemove.stop.prevent>PARAR AQUI!!!</span>
+    </p>
+    <!-- <a v-on:click.prevent href="http://google.com">Google</a> -->
+    <a v-on:click="naoNavegar" href="http://google.com">Google</a>
+    <hr>
+    <input type="text" v-on:keyup.enter.alter="exibirAlerta">
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            x: 0,
+            y: 0,
+            contador: 0
+        },
+        methods: {
+            somar(event, passo) {
+                console.log(event);
+                this.contador += passo;
+            },
+            atualizarXY(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            parar(event) {
+                event.stopPropagation();
+            },
+            naoNavegar(event) {
+                event.preventDefault();
+            },
+            exibirAlerta() {
+                alert("estou te alertando!");
+            }
+        }
+    })
+</script>

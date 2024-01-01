@@ -1,0 +1,52 @@
+#efeito {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+.destaque {
+	background-color: red;
+	width: 200px !important;
+}
+
+.encolher {
+	background-color: gray;
+	width: 50px !important;
+}
+
+.bordaQuadrada {
+	border: 5px solid red;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+}
+
+.bordaRedonda {
+	border-radius: 20%;
+}
+
+.outraClasse {
+	background-color: aqua;
+}
+
+.divBarra {
+	display: flex;
+	justify-content: center;
+}
+
+.barraProgressoTotal {
+	margin: 5px;
+	padding: 2px;
+	display: flex;
+	justify-content: left;
+	border-radius: 2%;
+	border: 3px solid rgb(56, 56, 56);
+	height: 20px;
+	width: 1000px;
+}
+
+.barraProgressoCarregado {
+	background-color: green;
+	display: flex;
+	justify-content: center;
+}
