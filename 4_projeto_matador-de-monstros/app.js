@@ -3,12 +3,10 @@ new Vue({
     data: {
         jogoIniciado: false,
         jogador: {
-            vida: 100,
-            ataque: 1
+            vida: 100
         },
         monstro: {
-            vida: 100,
-            ataque: 1
+            vida: 100
         },
         historico: []
     },
@@ -18,19 +16,19 @@ new Vue({
                 var vidaAtaqueJogador = Math.floor(Math.random() * (16) + 5);
                 this.monstro.vida -= vidaAtaqueJogador;
                 var itemHistoricoDeAtaqueJogadorEspecial = { corHistoricoAtaque: "historico-cor-jogador", mensagem: `JOGADOR ATINGIU MONSTRO COM ${vidaAtaqueJogador}.` };
-                this.historico.push(itemHistoricoDeAtaqueJogadorEspecial);
+                this.historico.unshift(itemHistoricoDeAtaqueJogadorEspecial);
             } else {
                 var vidaAtaqueJogador = Math.floor(Math.random() * 6);
                 this.monstro.vida -= vidaAtaqueJogador;
                 var itemHistoricoDeAtaqueJogador = { corHistoricoAtaque: "historico-cor-jogador", mensagem: `JOGADOR ATINGIU MONSTRO COM ${vidaAtaqueJogador}.` };
-                this.historico.push(itemHistoricoDeAtaqueJogador);
+                this.historico.unshift(itemHistoricoDeAtaqueJogador);
             }
         },
         ataqueMonstro() {
             var vidaAtaqueMonstro = Math.floor(Math.random() * (6) + 5);
             this.jogador.vida -= vidaAtaqueMonstro;
             var itemHistoricoDeAtaqueMonstro = { corHistoricoAtaque: "historico-cor-monstro", mensagem: `MONSTRO ATINGIU JOGADOR COM ${vidaAtaqueMonstro}.` };
-            this.historico.push(itemHistoricoDeAtaqueMonstro);
+            this.historico.unshift(itemHistoricoDeAtaqueMonstro);
         },
         iniciarNovoJogo() {
             this.jogoIniciado = false;
@@ -50,10 +48,10 @@ new Vue({
                 this.jogador.vida = 100;
                 cura = cura - (vidaAnterior + cura - 100);
                 var itemHistoricoDeCuraJogador = { corHistoricoAtaque: "historico-cor-jogador", mensagem: `JOGADOR CUROU ${cura}.` };
-                this.historico.push(itemHistoricoDeCuraJogador);
+                this.historico.unshift(itemHistoricoDeCuraJogador);
             } else {
                 var itemHistoricoDeCuraJogador = { corHistoricoAtaque: "historico-cor-jogador", mensagem: `JOGADOR CUROU ${cura}.` };
-                this.historico.push(itemHistoricoDeCuraJogador);
+                this.historico.unshift(itemHistoricoDeCuraJogador);
             }
             this.ataqueMonstro();
         }

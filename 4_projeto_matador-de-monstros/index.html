@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="historico" v-if="historico.length > 0">
+        <div class="historico" v-if="historico.length">
             <div v-for="itemHistorico in historico" :class="itemHistorico.corHistoricoAtaque">
                 {{ itemHistorico.mensagem }}
             </div>
