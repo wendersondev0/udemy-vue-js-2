@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="projeto">
+    <div class="container">
+        <div class="personagem">
+            <h3>Jogador</h3>
+            <div class="barra-de-vida">
+                <div :style="[{width: jogador.vida + '%' }]" :class="barraJogadorClassCor"></div>
+            </div>
+            <span>{{ jogador.vida }}%</span>
+        </div>
+        <div class="personagem">
+            <h3>Monstro</h3>
+            <div class="barra-de-vida">
+                <div :style="[{width: monstro.vida + '%' }, barraMonstroClassCor ]" :class="barraMonstroClassCor"></div>
+            </div>
+            <span>{{ monstro.vida }}%</span>
+        </div>
+    </div>
+    <div class="container resultado">
+        <div class="resultado" :class="[{vitoria: vitoria}, {derrota: derrota}]">
+            <p v-if="vitoria">Você Ganhou! :)</p>
+            <p v-if="derrota">Você Perdeu! :(</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="acoes">
+            <template v-if="!jogoIniciado">
+                <button @click="jogoIniciado = true">INICIAR NOVO JOGO</button>
+            </template>
+            <template v-else>
+                <button :style="{backgroundColor: 'red'}" @click="atacar()">ATAQUE</button>
+                <button :style="{backgroundColor: 'orange'}" @click="atacar(true)">ATAQUE ESPECIAL</button>
+                <button :style="{backgroundColor: 'green'}" @click="curar()">CURAR</button>
+                <button :style="{backgroundColor: 'gray'}" @click="iniciarNovoJogo()">DESISTIR</button>
+            </template>
+        </div>
+    </div>
+    <div class="container">
+        <div class="historico" v-if="historico.length > 0">
+            <div v-for="itemHistorico in historico" :class="itemHistorico.corHistoricoAtaque">
+                {{ itemHistorico.mensagem }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
